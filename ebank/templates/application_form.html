@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>application_form</title>
+</head>
+<body>
+<h1>application form</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="enter your name"><br>
+    <label>Date of birth</label>
+    <input type="date" name="dob" required placeholder="enter your date of birth"><br>
+    <input type="number" name="age" required placeholder="enter your age"><br>
+
+    <label for="gender">Gender:</label>
+    <input type="radio" id="gender_male" name="gender" value="Male" required>
+    <label for="gender_male">Male</label>
+    <input type="radio" id="gender_female" name="gender" value="Female" required>
+    <label for="gender_female">Female</label>
+    <br>
+
+
+    <input type="number" name="phonenumber" placeholder="enter contact number"><br>
+    <input type="email" name="email" placeholder="enter your email id"><br>
+    <input type="text" name="address" placeholder="enter address"><br>
+
+    <label for="District">Select a district:</label>
+    <select id="District" name="District">
+        <option value="Malappuram">Malappuram</option>
+        <option value="Calicut">Calicut</option>
+        <option value="Thrissur">Thrissur</option>
+        <option value="Eranakulam">Eranakulam</option>
+        <option value="Kollam">Kollam</option>
+        <option value="Wayanad">Wayanad</option>
+    </select>
+    <br>
+    <label for="branch">Select branch:</label>
+    <select id="branch" name="branch">
+        <optgroup label="Malappuram branches">
+            <option value="manjeri">manjeri</option>
+             <option value="kondotty">kondotty</option>
+             <option value="tirur">tirur</option>
+        </optgroup>
+
+        <optgroup label="Calicut branches">
+            <option value="mavoor">mavoor</option>
+             <option value="palayam">palayam</option>
+             <option value="kutiyadi">kutiyadi</option>
+        </optgroup>
+        <optgroup label="Thrissur branches">
+            <option value="Amballur.">Amballur</option>
+             <option value="Chalakudy">Chalakudy</option>
+             <option value="East Fort">East Fort</option>
+        </optgroup>
+
+        <optgroup label="Eranakulam branches">
+            <option value="Aluva">Aluva</option>
+             <option value="Angamally">Angamally</option>
+             <option value="Kadavanthra">Kadavanthra</option>
+        </optgroup>
+        <optgroup label="Kollam branches">
+            <option value="Anchal">Anchal</option>
+             <option value="Ayoor">Ayoor</option>
+             <option value="Kadakkal">Kadakkal</option>
+        </optgroup>
+         <optgroup label="Wayanad branches">
+            <option value="Kalpetta">Kalpetta</option>
+             <option value="Mananthavady">Mananthavady</option>
+             <option value="Pulpally">Pulpally</option>
+        </optgroup>
+    </select>
+    <br>
+
+     <label for="Account">Select an account:</label>
+    <select id="Account" name="Account">
+        <option value="Savings">Savings</option>
+        <option value="Current">Current</option>
+        <option value="Salary_account">Salary_account</option>
+        <option value="NRI">NRI</option>
+    </select>
+    <br>
+    <label>materials provided</label><br>
+    <input type="checkbox" id="debit-card" name="materials">
+    <label for="debit-card"> debit-card</label>
+    <input type="checkbox" id="Credit-card" name="materials">
+    <label for="Credit-card"> Credit-card</label>
+    <input type="checkbox" id="cheque book" name="materials">
+    <label for="cheque book"> cheque book</label>
+    <br>
+
+    <input type="submit"><br>
+
+
+</form>
+
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <input type="submit" value="Logout">
+</form>
+
+{% for mesg in messages %}
+<h2>{{mesg}}</h2>
+{% endfor %}
+
+        <a href="/">Return to Home Page</a>
+</body>
+</html>
